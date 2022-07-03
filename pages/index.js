@@ -59,6 +59,7 @@ export default function Home() {
       const fetchWord = () => {
       const randomWord = WORDS[Math.floor(Math.random() * WORDS.length - 1)]
       setSolution(randomWord);
+      console.log(randomWord);
     }
     
     fetchWord();
