@@ -4,16 +4,22 @@
 
 @layer components{
   .normal {
-    @apply flex uppercase w-16 h-[65px] mx-[2.5px] outline outline-[#3a3a3c] outline-offset-[-2.5px] text-white font-bold text-[40px] items-center justify-center cursor-default bg-transparent;
+    @apply flex uppercase w-[62px] h-[63px] mx-[2.5px] outline outline-[#3a3a3c] outline-offset-[-2.5px] text-white font-bold text-[40px] items-center justify-center cursor-default bg-transparent;
   }
   .correct {
-    @apply flex uppercase w-16 h-[65px] mx-[2.5px] outline-transparent text-white font-bold text-[40px] items-center justify-center bg-[#538d4e] cursor-default;
+    @apply flex uppercase w-[62px] h-[63px] mx-[2.5px] outline-transparent text-white font-bold text-[40px] items-center justify-center bg-[#538d4e] cursor-default;
   }
   .close {
-    @apply flex uppercase w-16 h-[65px] mx-[2.5px] outline-transparent text-white font-bold text-[40px] items-center justify-center bg-[#b59f3b] cursor-default ;
+    @apply flex uppercase w-[62px] h-[63px] mx-[2.5px] outline-transparent text-white font-bold text-[40px] items-center justify-center bg-[#b59f3b] cursor-default ;
   }
   .fill {
-    @apply flex uppercase w-16 h-[65px] mx-[2.5px] outline-transparent text-white font-bold text-[40px] items-center justify-center bg-[#3a3a3c] cursor-default ;
+    @apply flex uppercase w-[62px] h-[63px] mx-[2.5px] outline-transparent text-white font-bold text-[40px] items-center justify-center bg-[#3a3a3c] cursor-default ;
+  }
+  .answer {
+    @apply absolute w-24 h-10 font-bold leading-10 text-center text-white z-50 uppercase bg-red-600 rounded text-[20px] left-5 top-16 shadow-lg cursor-default;
+  }
+  .correct-answer {
+    @apply absolute w-28 h-10 font-bold leading-10 text-center text-black uppercase bg-white rounded text-[18px] left-4 top-16 shadow-lg cursor-default z-50;
   }
 }
 
@@ -56,3 +62,4 @@
     transform: rotateX(0deg);
   }
 }
+

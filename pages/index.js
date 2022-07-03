@@ -2,14 +2,16 @@ import Head from 'next/head'
 import { useEffect, useState } from 'react'
 import Column from '../components/Column'
 import { WORDS } from '../components/word';
+import { motion } from 'framer-motion';
 
 export default function Home() {
   const [guesses, setGuesses] = useState(Array(6).fill(null));
   const [solution, setSolution] = useState("");
   const [currentGuess, setCurrentGuess] = useState("");
   const [isGameOver, setIsGameOver] = useState(false);
+  const [isCorrect, setIsCorrect] = useState(false);
   
-
+  console.log(guesses[0])
 
   useEffect(() => {
     const handleType = (event) => {
@@ -22,18 +24,23 @@ export default function Home() {
         if(currentGuess.length !== 5) {
           return;
         }
+
+        if(guesses[4] !== null ) {
+          setIsGameOver(true);
+        }
+        
         const newGuesses = [...guesses];
-        console.log(newGuesses)
         newGuesses[guesses.findIndex(val => val == null)] = currentGuess;
         setGuesses(newGuesses);
         setCurrentGuess('');
         
-        const isCorrect = solution === currentGuess;
-        console.log(currentGuess)
+        
         if(isCorrect) {
           setIsGameOver(true);
         }
-
+        if(solution === currentGuess) {
+          setIsCorrect(true);
+        }
       }
       
       if(event.key === 'Backspace') {
@@ -77,18 +84,20 @@ export default function Home() {
       <main className='bg-[#121213] min-h-screen  max-w-screen m-0 p-0'>
       <header className='flex items-center justify-between px-4 py-0 h-[63px] text-[16px] w-full text-white border-b border-[#3a3a3c] bg-[#121213] absolute'>
         <div className="left"></div>
-        <div className="logo">
+        <div className="relative items-center justify-center logo">
           <h1 className='font-bold text-[45px] tracking-tighter cursor-pointer'>Wordle</h1>
+          {isGameOver && <motion.span initial={{ y: 0 }} animate={{ y: 5 }} transition={{ type: "spring", stiffness: 500 }} className='answer'>{solution}</motion.span>}
+          {isCorrect && <motion.span initial={{ y: 0 }} animate={{ y: 5 }} transition={{ type: "spring", stiffness: 500 }} className='correct-answer'>Excellent</motion.span>}
         </div>
         <div className="right"></div> 
       </header>
       
-
+        
         <div className="flex justify-center h-screen max-w-[700px]  mx-auto my-0 flex-col ">
           
-          <div className="flex flex-1  h-[800px] w-full justify-center pt-[53px]">
+          <div className="flex flex-1 justify-center pt-[53px]">
             
-          <div className="flex flex-col w-[400px] h-[430px]  mt-5">
+          <div className="flex flex-col w-[350px] h-[420px]  mt-5">
           
             {guesses.map((guess, i) => {
               
