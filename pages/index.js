@@ -306,8 +306,7 @@ export default function Home() {
     }
     
     fetchWord();
-  }, [])
-  
+  }, []);
   
   return (
     <div >
@@ -344,17 +343,19 @@ export default function Home() {
                   key={i} guess={isCurrentGuess ? currentGuess : guess ?? ""} 
                   isFinal={!isCurrentGuess && guess !== null} 
                   solution={solution}
-                 />
+                 /> 
                  
               )
+              
             })}
             
           </div>
-
+          
           </div>
+
             <div className="flex flex-col max-w-full h-[280px]">
               <div className="flex justify-center w-full font-bold text-white text-[25px] mb-2">
-                <button className='bg-[#818384] text-center w-14 h-20 justify-center items-center block  mx-1 rounded-lg' onClick={handleQ}>Q</button>
+                <button className={`bg-[#818384] text-center w-14 h-20 justify-center items-center block  mx-1 rounded-lg`} onClick={handleQ}>Q</button>
                 <button className='bg-[#818384] text-center w-14 h-20 justify-center items-center block  mx-1 rounded-lg' onClick={handleW}>W</button>
                 <button className='bg-[#818384] text-center w-14 h-20 justify-center items-center block  mx-1 rounded-lg' onClick={handleE}>E</button>
                 <button className='bg-[#818384] text-center w-14 h-20 justify-center items-center block  mx-1 rounded-lg' onClick={handleR}>R</button>
